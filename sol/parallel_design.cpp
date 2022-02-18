@@ -19,7 +19,7 @@ void work_for_init_generations(individual *current_generation,
 		current_generation[i].chromosomes[i] = 1;
 		current_generation[i].index = i;
 		current_generation[i].chromosome_length = object_count;
-		// only chromosomes[i] is set (3 lines up)
+		// only chromosomes[i] is set (3 lines above)
 		current_generation[i].set_chromosomes_count = 1;
 
 		next_generation[i].fitness = 0;
