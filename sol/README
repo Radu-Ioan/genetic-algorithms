@@ -1,0 +1,30 @@
+
+Am plecat de la implementarea secventiala, am initializat threadurile dupa
+modelul de la laborator, doar ca in loc de variabile globale am creat structuri
+speciale pentru transmiterea argumentelor.
+
+In functia de work executata de fiecare thread, dupa ce mi-am initializat
+variabilele necesare, am paralelizat for-ul pentru initializarea pentru current
+si next generation.
+
+Mai departe, am inceput sa lucrez pentru for-ul de generations_count iteratii
+in care am impartit threadurilor fiecare operatie dintr-o bucla din
+implementarea secventiala, mai putin: sortarea dupa fitness,
+verificarea imparitatii numarului de indivizi distribuiti catre procesul de
+crossover si printarea, instructiuni ce au fost executate doar de catre un
+singur thread, 0.
+
+Mai detaliat, pentru copierea primilior 30% de indivizi in next_generation si
+pentru crossover am pus threadurile sa faca aceeasi operatie pentru fiecare
+individ ce i-a fost repartizat. Analog pentru initilizare, compunerea
+fitnessului si reindexare, numai ca in acest caz numarul de indivizi impartit a
+fost 100%.
+
+Singura manevra a fost la mutate_string unde pentru mutatia primilor 20%
+am repartizat P/2 threaduri si tot P/2 si pentru ceilalti 20%, iar in cazul in
+care P este impar, am lasat un thread in plus pentru mutate1 (deci tot pentru
+primii 20%). Adica nu am pus toate P threadurile sa faca mutate1 apoi mutate2.
+
+De asemenea, am adaugat inca un camp in structura unui individ care retine
+cati cromozomi are setati (sau echivalent, ce obiecte contine) pentru a fi
+comparati mai rapid/usor la sortare.
